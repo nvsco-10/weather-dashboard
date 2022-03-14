@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+}
+
+header {
+    background-color: rgb(17, 85, 131);
+    color: white;
+    text-align: center;
+}
+
+main {
+    display: flex;
+}
+
+section.search-container {
+    flex-basis: 30%;
+}
+
+section.data-container {
+    flex-basis: 70%;
+}
+
