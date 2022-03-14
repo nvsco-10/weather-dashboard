@@ -1,5 +1,13 @@
 const input = document.querySelector(".city-input");
-const submitBtn = document.querySelector(".submit-btn")
+const searchBtn = document.querySelector(".search-btn");
+
+const cityOutput = document.querySelector(".city-name");
+const dateOutput = document.querySelector(".date");
+const tempOutput = document.querySelector(".temp");
+const uvOutput = document.querySelector(".uv-index");
+const humidityOutput = document.querySelector(".humidity");
+const windOutput = document.querySelector(".wind");
+const feelsLikeOutput = document.querySelector(".feels-like")
 
 const key = "66c87a27c099bc7c4716aa574eadefef";
 
