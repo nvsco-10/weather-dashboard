@@ -4,25 +4,82 @@
     box-sizing: border-box;
 }
 
-body {
-    min-height: 100vh;
-}
-
 header {
-    background-color: rgb(17, 85, 131);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(17, 85, 131,0.9);
     color: white;
     text-align: center;
+    height: 3rem;
+}
+
+header h1 {
+    font-size: 1.5rem;
 }
 
 main {
     display: flex;
+    justify-content: center;
+    min-height: calc(100vh - 3rem);
+    padding: 1rem;
+    background-image: url("../img/bg1.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+/* Photo by Paul Gilmore on Unsplash */
+
+section {
+    padding: 1rem;
+    background-color: rgba(224, 240, 247, 0.5);
 }
 
 section.search-container {
-    flex-basis: 30%;
+    flex-basis: 20%;
+    margin-right: 2rem;
 }
 
 section.data-container {
     flex-basis: 70%;
 }
 
+
+/* -------------- Search section --------------- */
+
+div.saved-cities {
+    display: flex;
+    flex-direction: column;
+}
+
+button.saved {
+    display: block
+}
+
+/* -------------- Weather data section --------------- */
+
+.data-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.data-row {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 0;
+}
+
+
+.city-name {
+    font-size: 2rem;
+}
+
+.data-main {
+    display: flex;
+    align-items: center;
+}
+
+.temp {
+    font-size: 4rem;
+}
