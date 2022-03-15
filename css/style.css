@@ -84,3 +84,18 @@ button.saved {
 .temp {
     font-size: 4rem;
 }
+
+/* -------------- 5-day weather data section --------------- */
+
+.day-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.future-data {
+    display: flex;
+    align-items: center;
+}
+

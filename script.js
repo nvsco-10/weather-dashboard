@@ -3,12 +3,16 @@ const searchBtn = document.querySelector(".search-btn");
 
 const cityOutput = document.querySelector(".city-name");
 const dateOutput = document.querySelector(".date");
+
+//current weather data selectors
 const tempOutput = document.querySelector(".temp");
 const descOutput = document.querySelector(".description")
 const uvOutput = document.querySelector(".uv-index");
 const humidityOutput = document.querySelector(".humidity");
 const windOutput = document.querySelector(".wind");
 const feelsLikeOutput = document.querySelector(".feels-like")
+
+const fiveDayOutput = $(".five-day");
 
 const key = "66c87a27c099bc7c4716aa574eadefef";
 
@@ -44,18 +48,14 @@ function getWeatherData(lat,lon) {
 }
 
 function displayWeatherData(data) {
-    const currentDate = getCurrentDate();
+    const date = getCurrentDate();
     const { current, daily } = data;
-    console.log(current);
-    console.log(daily);
-
-    
 
     // current weather data
     const { temp, uvi, wind_speed, humidity, feels_like, weather } = current;
     const { icon, description } = weather[0];
 
-    dateOutput.textContent = currentDate;
+    dateOutput.textContent = date;
     tempOutput.textContent = `${temp}°F`;
     descOutput.textContent = description;
     uvOutput.textContent = uvi;
@@ -63,13 +63,38 @@ function displayWeatherData(data) {
     windOutput.textContent = `${wind_speed} mph`;
     feelsLikeOutput.textContent = `${feels_like}°F`
 
+    // 5-day forecast temperature
+    get5Day(daily);
+
+
 }
 
 
-    // https://api.openweathermap.org/data/2.5/onecall?lat=51.5073&lon=-0.1276&exclude=hourly,minutely&units=imperial&appid=66c87a27c099bc7c4716aa574eadefef
+function get5Day(data) {
+    const currentDate = new Date();
+    fiveDayOutput.html("")
 
-    //time stamp to date: https://www.delftstack.com/howto/javascript/javascript-convert-timestamp-to-date/
-    
+    for (let i=0; i<5; i++) {
+        const { temp, humidity, wind_speed, weather } = data[i];
+        const { icon } = weather[0];
+   
+        fiveDayOutput.append(
+            `<div class="day-box">
+                <span>January 3</span>
+                <div class="future-data">
+                    <img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="weather-icon">
+                    <div>
+                        <span>${temp.day}°F</span>
+                        <p><span>${humidity}%</span> | <span>${wind_speed} mph</span></p>
+                    </div>
+                </div>
+            </div>`
+        )
+    }
+        
+}   
+
+
 function getCurrentDate() {
     const currentDate = new Date();
 
@@ -85,3 +110,11 @@ function getCurrentDate() {
     return date;
 }
 
+// https://api.openweathermap.org/geo/1.0/direct?q=london&limit=5&appid=66c87a27c099bc7c4716aa574eadefef
+
+// https://api.openweathermap.org/data/2.5/onecall?lat=51.5073&lon=-0.1276&exclude=hourly,minutely&units=imperial&appid=66c87a27c099bc7c4716aa574eadefef
+
+
+// https://api.openweathermap.org/data/2.5/onecall?lat=51.5073&lon=-0.1276&exclude=hourly,minutely&units=imperial&appid=66c87a27c099bc7c4716aa574eadefef
+
+//time stamp to date: https://www.delftstack.com/howto/javascript/javascript-convert-timestamp-to-date/
