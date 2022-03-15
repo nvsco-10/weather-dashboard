@@ -42,14 +42,14 @@ function getWeatherData(lat, lon, name) {
     // https://api.openweathermap.org/data/2.5/onecall?lat=51.5073&lon=-0.1276&exclude=hourly,minutely&appid=66c87a27c099bc7c4716aa574eadefef
     const oneCallUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=imperial&appid=${key}`
 
-    cityOutput.textContent = name;
+    // cityOutput.textContent = name;
     
     fetch(oneCallUrl)
         .then(result => result.json())
-        .then(data => displayWeatherData(data))
+        .then(data => displayWeatherData(data, name))
 }
 
-function displayWeatherData(data) {
+function displayWeatherData(data,name) {
     const date = getCurrentDate();
     const { current, daily } = data;
 
@@ -57,6 +57,7 @@ function displayWeatherData(data) {
     const { temp, uvi, wind_speed, humidity, feels_like, weather } = current;
     const { icon, description } = weather[0];
 
+    cityOutput.textContent = name;
     dateOutput.textContent = date;
     tempOutput.textContent = `${temp}°F`;
     descOutput.textContent = description;

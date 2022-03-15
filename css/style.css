@@ -28,6 +28,10 @@ main {
     background-position: center;
 }
 
+h1, h2, h3, h4, p {
+    text-align: center;
+}
+
 /* Photo by Paul Gilmore on Unsplash */
 
 section {
@@ -101,6 +105,10 @@ button.saved {
     display: flex;
     align-items: center;
     width: 8rem;
+}
+
+.sub-box img {
+    margin-inline: 1rem;
 }
 
 /* -------------- 5-day weather data section --------------- */
