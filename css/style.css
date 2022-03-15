@@ -73,6 +73,7 @@ button.saved {
 
 .city-name {
     font-size: 2rem;
+    text-transform: capitalize;
 }
 
 .data-main {
