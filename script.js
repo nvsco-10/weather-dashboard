@@ -12,7 +12,7 @@ const humidityOutput = document.querySelector(".humidity");
 const windOutput = document.querySelector(".wind");
 const feelsLikeOutput = document.querySelector(".feels-like")
 
-const fiveDayOutput = $(".five-day");
+const fiveDayOutput = document.querySelector(".five-day");
 
 const key = "66c87a27c099bc7c4716aa574eadefef";
 
@@ -72,7 +72,7 @@ function displayWeatherData(data) {
 
 function get5Day(data) {
     const currentDate = new Date();
-    fiveDayOutput.html("")
+    fiveDayOutput.innerHtml = "";
 
     for (let i=0; i<5; i++) {
         const { temp, humidity, wind_speed, weather } = data[i];

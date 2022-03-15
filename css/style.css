@@ -64,38 +64,55 @@ button.saved {
     align-items: center;
 }
 
-.data-row {
-    display: flex;
-    flex-direction: row;
-    margin: 1rem 0;
+.data-header {
+    text-align: center;
 }
 
+.row {
+    display: flex;
+    gap: 4rem;
+    margin: 2rem 0;
+}
 
 .city-name {
     font-size: 2rem;
     text-transform: capitalize;
 }
 
-.data-main {
+.currentdata-main {
     display: flex;
     align-items: center;
 }
 
-.temp {
-    font-size: 4rem;
+.current-temp {
+    font-size: 3rem;
+}
+
+/* sub data */
+
+.sub-row {
+    display: flex;
+}
+
+.sub-box {
+    display: flex;
+    align-items: center;
+    width: 8rem;
 }
 
 /* -------------- 5-day weather data section --------------- */
 
-.day-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.future-forecast.row {
+    gap: 2rem;
 }
 
-.future-data {
-    display: flex;
-    align-items: center;
+.forecast-box {
+    text-align: center;
+    border: solid 1px black;
+    border-radius: 15px;
+    padding: 1rem 1.5rem;
 }
 
+.sub-temp {
+    font-size: 1.3rem;
+}
