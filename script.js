@@ -44,14 +44,18 @@ function getWeatherData(lat,lon) {
 }
 
 function displayWeatherData(data) {
+    const currentDate = getCurrentDate();
     const { current, daily } = data;
     console.log(current);
     console.log(daily);
+
+    
 
     // current weather data
     const { temp, uvi, wind_speed, humidity, feels_like, weather } = current;
     const { icon, description } = weather[0];
 
+    dateOutput.textContent = currentDate;
     tempOutput.textContent = `${temp}°F`;
     descOutput.textContent = description;
     uvOutput.textContent = uvi;
@@ -66,5 +70,18 @@ function displayWeatherData(data) {
 
     //time stamp to date: https://www.delftstack.com/howto/javascript/javascript-convert-timestamp-to-date/
     
+function getCurrentDate() {
+    const currentDate = new Date();
 
+    const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    }
+
+    const date = currentDate.toLocaleString('en-US', options);
+
+    return date;
+}
 
