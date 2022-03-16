@@ -18,14 +18,18 @@ header h1 {
     font-size: 1.5rem;
 }
 
-main {
-    display: flex;
-    justify-content: center;
-    min-height: calc(100vh - 3rem);
-    padding: 1rem;
+body {
     background-image: url("../img/bg1.jpg");
     background-size: cover;
     background-position: center;
+    min-height: 100vh;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    
 }
 
 h1, h2, h3, h4, p {
@@ -37,17 +41,16 @@ h1, h2, h3, h4, p {
 section {
     padding: 1rem;
     background-color: rgba(224, 240, 247, 0.5);
-    height: 80%;
-
+    height: 700px;
 }
 
 section.search-container {
-    flex-basis: 20%;
+    max-width: 300px;
     margin-right: 2rem;
 }
 
 section.data-container {
-    flex-basis: 70%;
+    max-width: 900px;
     
 }
 
@@ -60,7 +63,11 @@ div.saved-cities {
 }
 
 button.saved {
-    display: block
+    display: block;
+    margin: 0.2rem 0;
+    padding: 0.3em 0;
+    border-radius: 5px;
+    outline: none;
 }
 
 /* -------------- Weather data section --------------- */

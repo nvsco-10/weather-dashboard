@@ -77,7 +77,11 @@ function get5Day(data) {
     console.log(data)
 
     for (let i=1; i<6; i++) {
+        const timestamp = data[i].dt;
+        const dayDate = convertTimestamp(timestamp);
+   
         const icon = data[i].weather[0].icon;
+        document.querySelector(`.day${i}-date`).textContent = dayDate;
         document.querySelector(`.day${i}-temp`).textContent = `${data[i].temp.day}°F`;
         document.querySelector(`.day${i}-humidity`).textContent = `${data[i].humidity}%`;
         document.querySelector(`.day${i}-wind`).textContent = `${data[i].wind_speed} mph`;
@@ -86,6 +90,10 @@ function get5Day(data) {
 
 
 }   
+
+function saveQuery(city){
+    
+}
 
 
 function getCurrentDate() {
@@ -103,11 +111,23 @@ function getCurrentDate() {
     return date;
 };
 
+function convertTimestamp(timestamp) {
+    const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    }
+
+    // convert timestamp: https://stackoverflow.com/questions/24170933/convert-unix-timestamp-to-date-time-javascript
+    const date = new Date(timestamp*1000);
+    const convertedDate = date.toLocaleString('en-US', options);
+
+    return convertedDate;
+}
+
 // https://api.openweathermap.org/geo/1.0/direct?q=london&limit=5&appid=66c87a27c099bc7c4716aa574eadefef
 
 // https://api.openweathermap.org/data/2.5/onecall?lat=51.5073&lon=-0.1276&exclude=hourly,minutely&units=imperial&appid=66c87a27c099bc7c4716aa574eadefef
 
 
 // https://api.openweathermap.org/data/2.5/onecall?lat=51.5073&lon=-0.1276&exclude=hourly,minutely&units=imperial&appid=66c87a27c099bc7c4716aa574eadefef
-
-// time stamp to date: https://www.delftstack.com/howto/javascript/javascript-convert-timestamp-to-date
