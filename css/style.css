@@ -45,7 +45,7 @@ section {
 }
 
 section.search-container {
-    max-width: 300px;
+    max-width: 350px;
     margin-right: 2rem;
 }
 
@@ -57,17 +57,55 @@ section.data-container {
 
 /* -------------- Search section --------------- */
 
-div.saved-cities {
-    display: flex;
-    flex-direction: column;
+.search-box h2 {
+    margin-bottom: 0.5rem;
 }
 
-button.saved {
-    display: block;
+input {
+    height: 1.5rem;
+    width: 100%;
+    padding: 0.3em 0.5em;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+}
+
+.search-btn {
+    background-color: rgba(17, 85, 131,0.9);
+    color: white;
+    width: 100%;
+}
+
+div.saved {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+}
+
+.favorites {
+    display: flex;
+    justify-content: space-between;
+}
+
+span.clear {
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+}
+
+button {
+    width: 100%;
     margin: 0.2rem 0;
     padding: 0.3em 0;
     border-radius: 5px;
     outline: none;
+    background-color: rgb(90, 86, 81);
+    color: white;
+    cursor: pointer;
+}
+
+button.saved:hover {
+    background-color: green;
 }
 
 /* -------------- Weather data section --------------- */
@@ -111,7 +149,8 @@ button.saved {
 .sub-box {
     display: flex;
     align-items: center;
-    width: 8rem;
+    width: 9rem;
+    margin: 0.5rem 0;
 }
 
 .sub-box img {
@@ -131,6 +170,16 @@ button.saved {
     padding: 1rem 1.5rem;
 }
 
+.sub-date {
+    font-size: 0.9rem;
+}
+
 .sub-temp {
     font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.sub-data {
+    font-size: 0.8rem;
 }

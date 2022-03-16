@@ -3,6 +3,8 @@ const searchBtn = document.querySelector(".search-btn");
 
 const cityOutput = document.querySelector(".city-name");
 const dateOutput = document.querySelector(".date");
+const savedOutput = document.querySelector(".saved");
+const savedCities = document.querySelector(".saved-cities");
 
 //current weather data selectors
 const tempOutput = document.querySelector(".current-temp");
@@ -14,13 +16,30 @@ const feelsLikeOutput = document.querySelector(".feels-like")
 
 const key = "66c87a27c099bc7c4716aa574eadefef";
 
-document.addEventListener("DOMContentLoaded", convertToCoordinates("New York"))
+document.addEventListener("DOMContentLoaded", function() {
+    displaySavedBtns();
+    convertToCoordinates("New York");
+});
 
 searchBtn.addEventListener("click", function() {
     const cityname = input.value;
-    console.log(cityname)
+    console.log(cityname);
     convertToCoordinates(cityname);
 })
+
+savedOutput.addEventListener("click", function(e) {
+    console.log(e.target.tagName)
+    if (e.target.tagName === "BUTTON") {
+        convertToCoordinates(e.target.textContent)
+    }
+
+    if (e.target.tagName === "SPAN") {
+        localStorage.clear();
+        savedCities.innerHTML = "";
+    }
+    
+})
+
 
 function convertToCoordinates(city) {
     // convert city name to coordinates - needed to use one call api
@@ -32,8 +51,10 @@ function convertToCoordinates(city) {
         // console.log(data[0])
         const { lat, lon, name} = data[0];
         
+        saveQuery(name);
         getWeatherData(lat,lon,name)
     })
+    .catch(e => alert("Please enter valid city name"))
 
 }
 
@@ -42,7 +63,6 @@ function getWeatherData(lat, lon, name) {
     // https://api.openweathermap.org/data/2.5/onecall?lat=51.5073&lon=-0.1276&exclude=hourly,minutely&appid=66c87a27c099bc7c4716aa574eadefef
     const oneCallUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=imperial&appid=${key}`
 
-    // cityOutput.textContent = name;
     
     fetch(oneCallUrl)
         .then(result => result.json())
@@ -83,8 +103,8 @@ function get5Day(data) {
         const icon = data[i].weather[0].icon;
         document.querySelector(`.day${i}-date`).textContent = dayDate;
         document.querySelector(`.day${i}-temp`).textContent = `${data[i].temp.day}°F`;
-        document.querySelector(`.day${i}-humidity`).textContent = `${data[i].humidity}%`;
-        document.querySelector(`.day${i}-wind`).textContent = `${data[i].wind_speed} mph`;
+        document.querySelector(`.day${i}-humidity`).textContent = `Humidity: ${data[i].humidity}%`;
+        document.querySelector(`.day${i}-wind`).textContent = `Wind: ${data[i].wind_speed} mph`;
         document.querySelector(`.day${i}-icon`).src = `http://openweathermap.org/img/wn/${icon}.png`;
     }
 
@@ -92,7 +112,35 @@ function get5Day(data) {
 }   
 
 function saveQuery(city){
-    
+
+    // convert data from local storage - from JSON string to object
+    const cities = JSON.parse(localStorage.getItem('cities')) ?? [];
+
+    // if searched city isn't already in storage, push it to the array
+    if (!cities.includes(city)) {
+        cities.push(city)
+    }
+
+    localStorage.setItem('cities', JSON.stringify(cities));
+
+    // console.log(localStorage);
+
+}
+
+// localStorage.clear();
+
+function displaySavedBtns() {
+    const cities = JSON.parse(localStorage.getItem('cities'));
+    console.log(cities);
+
+    if  (cities !== null) {
+        cities.forEach(city => {
+            const btn = document.createElement("button");
+            btn.classList.add("saved");
+            btn.textContent = city;
+            savedCities.append(btn);
+        })
+    }
 }
 
 
@@ -125,9 +173,3 @@ function convertTimestamp(timestamp) {
     return convertedDate;
 }
 
-// https://api.openweathermap.org/geo/1.0/direct?q=london&limit=5&appid=66c87a27c099bc7c4716aa574eadefef
-
-// https://api.openweathermap.org/data/2.5/onecall?lat=51.5073&lon=-0.1276&exclude=hourly,minutely&units=imperial&appid=66c87a27c099bc7c4716aa574eadefef
-
-
-// https://api.openweathermap.org/data/2.5/onecall?lat=51.5073&lon=-0.1276&exclude=hourly,minutely&units=imperial&appid=66c87a27c099bc7c4716aa574eadefef
