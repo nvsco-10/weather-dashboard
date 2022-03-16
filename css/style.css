@@ -28,8 +28,20 @@ body {
 main {
     display: flex;
     justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 5rem);
     padding: 1rem;
     
+}
+
+footer {
+    height: 2rem;
+    color: rgba(255, 255, 255, 0.226);
+}
+
+footer a {
+    text-decoration: underline;
+    color: inherit;
 }
 
 h1, h2, h3, h4, p {
@@ -41,16 +53,22 @@ h1, h2, h3, h4, p {
 section {
     padding: 1rem;
     background-color: rgba(224, 240, 247, 0.5);
-    height: 700px;
+    min-height: 500px;
+    border-radius: 8px;
 }
 
 section.search-container {
     max-width: 350px;
     margin-right: 2rem;
+    background-color: rgba(224, 240, 247, 0.144);
 }
 
 section.data-container {
-    max-width: 900px;
+    max-width: 1000px;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     
 }
 
@@ -99,13 +117,13 @@ button {
     padding: 0.3em 0;
     border-radius: 5px;
     outline: none;
-    background-color: rgb(90, 86, 81);
+    background-color: rgba(25, 128, 42, 0.877);
     color: white;
     cursor: pointer;
 }
 
 button.saved:hover {
-    background-color: green;
+    background-color: rgb(28, 99, 28);
 }
 
 /* -------------- Weather data section --------------- */
@@ -157,6 +175,10 @@ button.saved:hover {
     margin-inline: 1rem;
 }
 
+.box h4 {
+    padding: 0.2em 0.3em;
+}
+
 /* -------------- 5-day weather data section --------------- */
 
 .future-forecast.row {
@@ -165,7 +187,7 @@ button.saved:hover {
 
 .forecast-box {
     text-align: center;
-    border: solid 1px black;
+    background-color: rgba(199, 215, 241, 0.246);
     border-radius: 15px;
     padding: 1rem 1.5rem;
 }
