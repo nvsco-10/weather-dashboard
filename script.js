@@ -13,17 +13,19 @@ const uvOutput = document.querySelector(".uv-index");
 const humidityOutput = document.querySelector(".humidity");
 const windOutput = document.querySelector(".wind");
 const feelsLikeOutput = document.querySelector(".feels-like")
+const uvHeader = document.querySelector(".uv") // to change background color
 
 const key = "66c87a27c099bc7c4716aa574eadefef";
 
 document.addEventListener("DOMContentLoaded", function() {
+    savedCities.innerHTML = "";
     displaySavedBtns();
-    convertToCoordinates("New York");
+    convertToCoordinates("Dallas");
 });
 
 searchBtn.addEventListener("click", function() {
     const cityname = input.value;
-    console.log(cityname);
+    // console.log(cityname);
     convertToCoordinates(cityname);
 })
 
@@ -85,6 +87,9 @@ function displayWeatherData(data,name) {
     humidityOutput.textContent = `${humidity}%`;
     windOutput.textContent = `${wind_speed} mph`;
     feelsLikeOutput.textContent = `${feels_like}°F`
+
+    // change color depending on uv-index
+    getUvColor(uvi);
 
     // 5-day forecast temperature
     get5Day(daily);
@@ -173,3 +178,17 @@ function convertTimestamp(timestamp) {
     return convertedDate;
 }
 
+
+function getUvColor(uvi) {
+
+    if (uvi <= 2) {
+        uvHeader.style.backgroundColor = "green";
+    } else if (uvi <= 5) {
+        uvHeader.style.backgroundColor = "yellow";
+    } else if (uvi <= 10) {
+        uvHeader.style.backgroundColor = "orange";
+    } else {
+        uvHeader.style.backgroundColor = "red";
+    }
+  
+}
