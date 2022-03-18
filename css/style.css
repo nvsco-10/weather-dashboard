@@ -25,6 +25,8 @@ body {
     min-height: 100vh;
 }
 
+/* Photo by Paul Gilmore on Unsplash */
+
 main {
     display: flex;
     justify-content: center;
@@ -48,7 +50,6 @@ h1, h2, h3, h4, p {
     text-align: center;
 }
 
-/* Photo by Paul Gilmore on Unsplash */
 
 section {
     padding: 1rem;
@@ -58,19 +59,38 @@ section {
 }
 
 section.search-container {
-    max-width: 350px;
+    max-width: 300px;
     margin-right: 2rem;
+    margin-bottom: 2rem;
     background-color: rgba(224, 240, 247, 0.144);
 }
 
 section.data-container {
-    max-width: 1000px;
-    padding: 3rem;
+    min-width: 900px;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     
 }
+
+@media (max-width: 1200px) {
+    main {
+        flex-direction: column;
+    }
+
+    section.search-container {
+        width: 100%;
+        min-height: 7rem;
+    }
+}
+
+@media (max-width: 985px) {
+    section.data-container {
+        width: 90%;
+    }
+}
+
 
 
 /* -------------- Search section --------------- */
@@ -126,6 +146,12 @@ button.saved:hover {
     background-color: rgb(28, 99, 28);
 }
 
+@media (max-width: 1200px) {
+    button.saved {
+        width: 50%;
+    }
+}
+
 /* -------------- Weather data section --------------- */
 
 .data-container {
@@ -141,8 +167,11 @@ button.saved:hover {
 
 .row {
     display: flex;
+    justify-content: center;
     gap: 4rem;
     margin: 2rem 0;
+    flex-wrap: wrap;
+
 }
 
 .city-name {
@@ -183,15 +212,16 @@ button.saved:hover {
 /* -------------- 5-day weather data section --------------- */
 
 .future-forecast.row {
-    gap: 2rem;
+    gap: 0.5rem;
+    
 }
 
 .forecast-box {
-    flex-basis: 20%;
+    flex-basis: 19%;
     text-align: center;
     background-color: rgba(199, 215, 241, 0.246);
     border-radius: 15px;
-    padding: 1rem 1.5rem;
+    padding: 1.5rem;
 }
 
 .sub-date {
@@ -206,4 +236,14 @@ button.saved:hover {
 
 .sub-data {
     font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+    .forecast-box {
+        flex-basis: 80%;
+    }
+
+    .sub-date {
+        font-size: 1rem;
+    }
 }

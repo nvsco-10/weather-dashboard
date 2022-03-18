@@ -87,7 +87,7 @@ function displayWeatherData(data,name) {
     descOutput.textContent = description;
     uvOutput.textContent = uvi;
     humidityOutput.textContent = `${humidity}%`;
-    windOutput.textContent = `${wind_speed} mph`;
+    windOutput.textContent = `${Math.round(wind_speed)} mph`;
     feelsLikeOutput.textContent = `${feels_like}°F`
 
     // change color depending on uv-index
@@ -111,7 +111,7 @@ function get5Day(data) {
         document.querySelector(`.day${i}-date`).textContent = dayDate;
         document.querySelector(`.day${i}-temp`).textContent = `${data[i].temp.day}°F`;
         document.querySelector(`.day${i}-humidity`).textContent = `Humidity: ${data[i].humidity}%`;
-        document.querySelector(`.day${i}-wind`).textContent = `Wind: ${data[i].wind_speed} mph`;
+        document.querySelector(`.day${i}-wind`).textContent = `Wind: ${Math.round(data[i].wind_speed)} mph`;
         document.querySelector(`.day${i}-icon`).src = `http://openweathermap.org/img/wn/${icon}.png`;
     }
 
@@ -126,7 +126,7 @@ function saveQuery(city){
     // if searched city isn't already in storage, push it to the array
     if (!cities.includes(city)) {
         cities.push(city);
-        
+
         const btn = document.createElement("button");
         btn.classList.add("saved");
         btn.textContent = city;
