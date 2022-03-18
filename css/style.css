@@ -166,7 +166,7 @@ button.saved:hover {
 }
 
 .city-name {
-    font-size: 2rem;
+    font-size: 3rem;
     text-transform: capitalize;
 }
 
@@ -176,7 +176,7 @@ button.saved:hover {
 }
 
 .current-temp {
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
 
 /* sub data */
