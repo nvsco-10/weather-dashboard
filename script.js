@@ -1,5 +1,6 @@
 const input = document.querySelector(".city-input");
 const searchBtn = document.querySelector(".search-btn");
+const dataContainer = document.querySelector(".data-container");
 
 const cityOutput = document.querySelector(".city-name");
 const dateOutput = document.querySelector(".date");
@@ -27,6 +28,7 @@ searchBtn.addEventListener("click", function() {
     const cityname = input.value;
     // console.log(cityname);
     convertToCoordinates(cityname);
+    
 })
 
 savedOutput.addEventListener("click", function(e) {
@@ -47,6 +49,7 @@ function convertToCoordinates(city) {
     // convert city name to coordinates - needed to use one call api
     const geocodingUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${key}`
 
+
     fetch(geocodingUrl)
     .then(result => result.json())
     .then(data => {
@@ -64,7 +67,6 @@ function getWeatherData(lat, lon, name) {
     // one call api - exclude hourly & minutely 
     // https://api.openweathermap.org/data/2.5/onecall?lat=51.5073&lon=-0.1276&exclude=hourly,minutely&appid=66c87a27c099bc7c4716aa574eadefef
     const oneCallUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=imperial&appid=${key}`
-
     
     fetch(oneCallUrl)
         .then(result => result.json())
@@ -123,12 +125,18 @@ function saveQuery(city){
 
     // if searched city isn't already in storage, push it to the array
     if (!cities.includes(city)) {
-        cities.push(city)
+        cities.push(city);
+        
+        const btn = document.createElement("button");
+        btn.classList.add("saved");
+        btn.textContent = city;
+        savedCities.append(btn);
     }
 
     localStorage.setItem('cities', JSON.stringify(cities));
 
     // console.log(localStorage);
+    
 
 }
 

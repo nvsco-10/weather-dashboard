@@ -134,6 +134,7 @@ button.saved:hover {
     align-items: center;
 }
 
+
 .data-header {
     text-align: center;
 }
@@ -186,6 +187,7 @@ button.saved:hover {
 }
 
 .forecast-box {
+    flex-basis: 20%;
     text-align: center;
     background-color: rgba(199, 215, 241, 0.246);
     border-radius: 15px;
@@ -193,7 +195,7 @@ button.saved:hover {
 }
 
 .sub-date {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 .sub-temp {
