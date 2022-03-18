@@ -66,11 +66,10 @@ section.search-container {
 }
 
 section.data-container {
-    min-width: 900px;
-    padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 2rem;
     
 }
 
@@ -84,14 +83,6 @@ section.data-container {
         min-height: 7rem;
     }
 }
-
-@media (max-width: 985px) {
-    section.data-container {
-        width: 90%;
-    }
-}
-
-
 
 /* -------------- Search section --------------- */
 
@@ -208,6 +199,13 @@ button.saved:hover {
 .box h4 {
     padding: 0.2em 0.3em;
 }
+
+@media (max-width: 985px) {
+   .data-container {
+        width: 90vw;
+    }
+}
+
 
 /* -------------- 5-day weather data section --------------- */
 
